@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class M_user extends CI_Model {
 
 	var $table = 'users'; //nama tabel dari database
-	var $column_order = array(null, 'id_user', 'id_personel', 'email', 'level', 'lastlogin', 'active'); //field yang ada di table user
+	var $column_order = array(null, 'id_user', 'id_profile', 'email', 'level', 'lastlogin', 'active'); //field yang ada di table user
 	var $column_search = array('email', 'level'); //field yang diizin untuk pencarian 
 	var $order = array('id_user' => 'asc'); // default order 
 
@@ -17,10 +17,10 @@ class M_user extends CI_Model {
 	private function _get_datatables_query()
 	{
 		
-		$this->db->select('users.*')
-				 ->from($this->table)
+		$this->db->select('*')
+				 ->from($this->table);
                 //  ->join('personel', 'personel.id_personel = users.id_personel', 'left')
-				 ->where('users.deleted_at', NULL);
+				//  ->where('users.deleted_at', NULL);
 
 		$i = 0;
 	
@@ -74,15 +74,10 @@ class M_user extends CI_Model {
 
 	public function count_all()
 	{
-		$this->db->from($this->table)
-				 ->where('deleted_at', NULL);
+		$this->db->from($this->table);
+				//  ->where('deleted_at', NULL);
 		return $this->db->count_all_results();
 	}
-
-    public function getpersonel()
-    {
-        return $this->db->get_where('personel', array('deleted_at' => NULL))->result();
-    }
 
     public function add_user($data)
     {
@@ -120,10 +115,10 @@ class M_user extends CI_Model {
         return $this->db->get_where('users', $where)->num_rows();
     }
 
-    public function getAll() {
+    // public function getAll() {
 
-    	return $this->db->get_where('user', array('isdelete' => 0));
-    }
+    // 	return $this->db->get_where('users', array('isdelete' => 0));
+    // }
 
     public function getById($id)
     {
@@ -138,7 +133,7 @@ class M_user extends CI_Model {
 
     public function delete_personel($data, $id)
     {
-        $this->db->update('personel', $data, array('id_personel' => $id));
+        $this->db->update('users', $data, array('id_personel' => $id));
         return ($this->db->affected_rows() > 0) ? TRUE : FALSE;
     }
     

@@ -320,6 +320,13 @@ right connector from last child*/
 
                     <div class="d-flex align-items-center">
 
+
+                        <div class="ms-1 header-item d-none d-sm-flex">
+                            <a href="<?= base_url('profile') ?>" type="button" class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle">
+                                <i class='mdi mdi-account-circle fs-22'></i>
+                            </a>
+                        </div>
+
                         <div class="ms-1 header-item d-none d-sm-flex">
                             <button type="button" class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle" data-toggle="fullscreen">
                                 <i class='bx bx-fullscreen fs-22'></i>
@@ -347,7 +354,7 @@ right connector from last child*/
                                 <!-- item-->
                                 <h6 class="dropdown-header">Welcome <?= $this->data['nama'] ?>!</h6>
 
-                                <!-- <a class="dropdown-item" href="<?= base_url('profile') ?>"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a> -->
+                                <a class="dropdown-item" href="<?= base_url('profile') ?>"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
 
                                 <a class="dropdown-item" href="<?= base_url('logout') ?>"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Logout</span></a>
                             </div>

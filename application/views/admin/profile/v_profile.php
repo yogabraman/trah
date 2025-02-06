@@ -53,22 +53,24 @@ $this->load->view('admin/layouts/header');
           <div class="card">
             <div class="card-body p-4">
               <div class="text-center">
-                <div class="profile-user position-relative d-inline-block mx-auto  mb-4">
-                  <img src="<?= base_url() ?><?= $profile['foto'] ?>" class="rounded-circle avatar-xl img-thumbnail user-profile-image material-shadow" alt="user-profile-image">
-
-                  <form id="profile-img-form" action="<?= base_url('profile/change_picture') ?>" method="post" enctype="multipart/form-data">
-                    <div class="avatar-xs p-0 rounded-circle profile-photo-edit">
-                      <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
-                      <input id="profile-img-file-input" type="file" name="file" class="profile-img-file-input">
-                      <label for="profile-img-file-input" class="profile-photo-edit avatar-xs">
-                        <span class="avatar-title rounded-circle bg-light text-body material-shadow">
-                          <i class="ri-camera-fill"></i>
-                        </span>
-                      </label>
-                    </div>
-                  </form>
-
+                <div class="profile-user position-relative d-inline-block mx-auto mb-4">
+                  <!-- <img src="<?= base_url() ?><?= $profile['foto'] ?>" class="" alt="user-profile-image"> -->
+                  <img src="<?php echo base_url(); ?>assets/images/icon_user_1.png" class="rounded-circle img-thumbnail material-shadow align-middle" alt="user-profile-image">
                 </div>
+                <form id="profile-img-form" action="<?= base_url('profile/change_picture') ?>" method="post" enctype="multipart/form-data">
+                  <br>
+                  <label for="">Upload ulang Foto</label>
+                  <div class="avatar-xs p-0 rounded-circle profile-photo-edit">
+                    <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+                    <input id="profile-img-file-input" type="file" name="file" class="profile-img-file-input">
+                    <!-- <label for="profile-img-file-input" class="profile-photo-edit avatar-xs">
+                      <span class="avatar-title rounded-circle bg-light text-body material-shadow">
+                        <i class="ri-camera-fill"></i>
+                      </span>
+                    </label> -->
+                  </div>
+                  <span class="text-danger">Format jpg, maks: 5MB.</span>
+                </form><br>
                 <h5 class="fs-16 mb-1"><?= $this->data['nama'] ?></h5>
               </div>
             </div>
@@ -80,8 +82,8 @@ $this->load->view('admin/layouts/header');
               <div class="text-center">
                 <h5 class="fs-16 mb-1">Kode Referal Anda :</h5><br>
                 <h6 class="fs-16 mb-1"><?= $referral ?></h6><br>
-                <h5 class="fs-16 mb-1">Uniq ID Anda :</h5><br>
-                <h6 class="fs-16 mb-1"><?= $uid ?></h6>
+                <!-- <h5 class="fs-16 mb-1">Uniq ID Anda :</h5><br>
+                <h6 class="fs-16 mb-1"><?= $uid ?></h6> -->
               </div>
             </div>
           </div>
@@ -98,6 +100,11 @@ $this->load->view('admin/layouts/header');
                   </a>
                 </li>
                 <li class="nav-item">
+                  <a class="nav-link" data-bs-toggle="tab" href="#dead" role="tab">
+                    <i class="far fa-user"></i> Kematian
+                  </a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" data-bs-toggle="tab" href="#changePassword" role="tab">
                     <i class="far fa-user"></i> Change Password
                   </a>
@@ -111,14 +118,20 @@ $this->load->view('admin/layouts/header');
                 <div class="tab-pane active" id="personalDetails" role="tabpanel">
                   <form action="<?= base_url('profile/update_profile') ?>" method="post">
                     <div class="row">
-                      <div class="col-lg-6">
+                      <div class="col-lg-9">
                         <div class="mb-3">
                           <label class="form-label">Nama</label>
                           <input type="text" class="form-control" name="nama" value="">
                         </div>
                       </div>
+                      <div class="col-lg-3">
+                        <div class="mb-3">
+                          <label class="form-label">Nama Panggilan</label>
+                          <input type="text" class="form-control" name="nama" value="">
+                        </div>
+                      </div>
                       <!--end col-->
-                      <div class="col-lg-6">
+                      <!-- <div class="col-lg-6">
                         <div class="mb-3">
                           <label for="gender" class="form-label">Gender</label>
                           <select class="form-control" name="gender" id="selGender">
@@ -129,22 +142,29 @@ $this->load->view('admin/layouts/header');
 
                           </select>
                         </div>
-                      </div>
+                      </div> -->
                       <!--end col-->
                       <div class="col-lg-6">
                         <div class="mb-3">
-                          <label class="form-label">WA</label>
-                          <!-- <input type="hidden" class="form-control" name="nrpnip_old" value=""> -->
-                          <input type="text" id="onlyNumbers" oninput="this.value = this.value.replace(/[^0-9]/g, '');" maxlength="15" class="form-control" name="wa" value="">
+                          <label for="gender" class="form-label">Gender</label>
+                          <div class="col-lg-12">
+                            <input type="radio" name="gender"
+                              <?php if (isset($gender) && $gender == "female") echo "checked"; ?> value="female">
+                            <span><span>Laki-laki</span></span>
+                            <input type="radio" name="gender" style="margin-left: 50px;"
+                              <?php if (isset($gender) && $gender == "male") echo "checked"; ?> value="male">
+                            <span><span>Perempuan</span></span>
+                          </div>
+                          <div class="col-lg-6">
+                          </div>
                         </div>
                       </div>
-                      <!--end col-->
 
                       <div class="col-lg-6">
                         <div class="mb-3">
                           <label for="hubkel" class="form-label">Hubkel</label>
 
-                          <select class="form-control" name="hubkel" id="sekHubkel" required="">
+                          <select class="form-control" name="hubkel" id="selkel" required="">
 
                             <option value="">Pilih Hubungan Keluarga</option>
 
@@ -160,7 +180,30 @@ $this->load->view('admin/layouts/header');
                         </div>
                       </div>
                       <!--end col-->
-
+                      <div class="col-lg-6">
+                        <div class="mb-3">
+                          <label class="form-label">Tanggal Lahir</label>
+                          <!-- <input type="hidden" class="form-control" name="nrpnip_old" value=""> -->
+                          <input type="date" class="form-control" name="tgl_lahir" value="">
+                        </div>
+                      </div>
+                      <!--end col-->
+                      <div class="col-lg-6">
+                        <div class="mb-3">
+                          <label class="form-label">Anak ke</label>
+                          <!-- <input type="hidden" class="form-control" name="nrpnip_old" value=""> -->
+                          <input type="text" id="onlyNumbers" oninput="this.value = this.value.replace(/[^0-9]/g, '');" maxlength="15" class="form-control" name="wa" value="">
+                        </div>
+                      </div>
+                      <!--end col-->
+                      <div class="col-lg-12">
+                        <div class="mb-3">
+                          <label class="form-label">WA</label>
+                          <!-- <input type="hidden" class="form-control" name="nrpnip_old" value=""> -->
+                          <input type="text" id="onlyNumbers" oninput="this.value = this.value.replace(/[^0-9]/g, '');" maxlength="15" class="form-control" name="wa" value="">
+                        </div>
+                      </div>
+                      <!--end col-->
                       <div class="col-lg-12">
                         <div class="mb-3">
                           <label class="form-label">Alamat</label>
@@ -186,6 +229,27 @@ $this->load->view('admin/layouts/header');
                     </div>
                     <!--end row-->
                   </form>
+                </div>
+                <!--end tab-pane-->
+                <div class="tab-pane" id="dead" role="tabpanel">
+                  <form action="<?= base_url('') ?>" method="post">
+                    <div class="row g-2">
+                      <div class="col-lg-12">
+                        <label class="form-label">Tanggal Kematian</label>
+                        <input type="date" class="form-control" value="" >
+                      </div>
+                      <!--end col-->
+                      <div class="col-lg-12">
+                        <div class="text-end">
+                          <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+                          <button type="submit" class="btn btn-danger">Update</button>
+                        </div>
+                      </div>
+                      <!--end col-->
+                    </div>
+                    <!--end row-->
+                  </form>
+
                 </div>
                 <!--end tab-pane-->
                 <div class="tab-pane" id="changePassword" role="tabpanel">

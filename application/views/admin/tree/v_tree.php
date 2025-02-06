@@ -54,8 +54,8 @@ $this->load->view('admin/layouts/header');
               <div class="tree">
                 <ul>
                   <li>
-                    <a href="#">Parent</a>--
-                    --<a href="#">Parent</a>
+                    <a href="#">Parent</a>
+                    <a href="#">Parent</a>
                     <ul>
                       <li>
                         <a href="#">Child</a>
@@ -84,8 +84,8 @@ $this->load->view('admin/layouts/header');
                             </ul>
                           </li>
                           <li>
-                            <a class="husband" href="#">Grand Child</a>
-                            <a class="wife" href="#">Wife</a>
+                            <a class="" href="#">Grand Child</a>
+                            <a class="" href="#">Wife</a>
                             <ul>
                               <li><a href="#">Kid</a></li>
                               <li><a href="#">Kid</a></li>
@@ -96,7 +96,7 @@ $this->load->view('admin/layouts/header');
                     </ul>
                   </li>
                 </ul>
-              </div> 
+              </div>
             </div>
           </div>
         </div>

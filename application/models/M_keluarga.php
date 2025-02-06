@@ -17,7 +17,7 @@ class M_keluarga extends CI_Model {
 	private function _get_datatables_query()
 	{
 		
-		$this->db->select('keluarga.*')
+		$this->db->select('*')
 				 ->from($this->table);
                 //  ->join('bagian', 'bagian.id_bagian = personel.id_bagian', 'left')
 				//  ->where('personel.deleted_at', NULL);
@@ -74,8 +74,8 @@ class M_keluarga extends CI_Model {
 
 	public function count_all()
 	{
-		$this->db->from($this->table)
-				 ->where('deleted_at', NULL);
+		$this->db->from($this->table);
+				//  ->where('deleted_at', NULL);
 		return $this->db->count_all_results();
 	}
 
@@ -97,11 +97,6 @@ class M_keluarga extends CI_Model {
     {
         $this->db->update_batch($this->table, $data, $where);
         return ($this->db->affected_rows() > 0) ? TRUE : FALSE;
-    }
-
-    public function getBagian()
-    {
-        return $this->db->get_where('bagian', array('deleted_at' => NULL))->result();
     }
 
 	public function add_keluarga($data)

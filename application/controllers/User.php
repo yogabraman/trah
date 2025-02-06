@@ -22,9 +22,7 @@ class User extends MY_Controller
         $this->load->view('admin/user/v_user', $data);
     }
 
-    public 
-
-    function tgl_indo($tanggal)
+    public function tgl_indo($tanggal)
     {
         $bulan = array(
             1 =>    'Januari',
@@ -57,6 +55,36 @@ class User extends MY_Controller
 
     public function get_user()
     {
+        function tgl_indo($tanggal)
+        {
+            $bulan = array(
+                1 =>    'Januari',
+                'Februari',
+                'Maret',
+                'April',
+                'Mei',
+                'Juni',
+                'Juli',
+                'Agustus',
+                'September',
+                'Oktober',
+                'November',
+                'Desember'
+            );
+            $date = date_create($tanggal);
+            $date = date_format($date, "Y-m-d");
+            $time = date_create($tanggal);
+            $time = date_format($time, "H:i:s");
+
+            $pecahkan = explode('-', $date);
+            $waktu = explode(':', $time);
+
+            // variabel pecahkan 0 = tanggal
+            // variabel pecahkan 1 = bulan
+            // variabel pecahkan 2 = tahun
+
+            return $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0] . ' ' . $waktu[0] . ':' . $waktu[1] . ':' . $waktu[2];
+        }
 
         $csrf_name = $this->security->get_csrf_token_name();
         $csrf_hash = $this->security->get_csrf_hash();
@@ -76,7 +104,8 @@ class User extends MY_Controller
             $no++;
             $row = array();
             $row[] = $no;
-            $row[] = $field->username;
+            $row[] = $field->email;
+            $row[] = $field->level;
             $row[] = $field->level;
             $row[] = $field->lastlogin == null ? "" : tgl_indo($field->lastlogin);
             $row[] = $active;
@@ -144,8 +173,6 @@ class User extends MY_Controller
         date_default_timezone_set('Asia/Jakarta');
         $waktu = date('Y-m-d H:i:s');
         $tanggal = date('Y-m-d');
-
-        
     }
 
     public function get_edit()
@@ -155,8 +182,6 @@ class User extends MY_Controller
 
         $csrf_name = $this->security->get_csrf_token_name();
         $csrf_hash = $this->security->get_csrf_hash();
-
-        
     }
 
     public function edit_user()
@@ -165,9 +190,6 @@ class User extends MY_Controller
         $waktu = date('Y-m-d H:i:s');
 
         $id = $this->input->post('id_user');
-
-
-       
     }
 
     public function hapus_user($id)

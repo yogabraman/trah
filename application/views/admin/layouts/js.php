@@ -41,12 +41,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <script type="text/javascript">
         $(document).ready(function() {
 
-            const hubkel = "<?= $personel['hubkel'] ?>";
+            const hubkel = "<?= $profile['id_hubkel'] ?>";
             const gender = "<?= $profile['gender'] ?>";
 
-            $('#selHubkel').select2();
+            $('#selkel').select2();
 
-            $("#selHubkel").val(hubkel).trigger("change");
+            $("#selkel").val(hubkel).trigger("change");
 
 
             $('#selGender').select2();

@@ -63,7 +63,7 @@ $this->load->view('admin/layouts/header');
             </div>
             <div class="card-body">
               <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
-              <table id="myTablePersonel" class="display table table-bordered table-striped table-hover dt-responsive align-middle" style="width:100%">
+              <table id="myTableKeluarga" class="display table table-bordered table-striped table-hover dt-responsive align-middle" style="width:100%">
                 <thead>
                   <tr>
                     <th>No</th>
