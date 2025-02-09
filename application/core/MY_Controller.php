@@ -5,7 +5,7 @@ class MY_Controller extends CI_Controller {
     public function __construct() {
         parent::__construct();
         
-        // Panggil model m_suratmasuk di sini
+        // Panggil model
         $this->load->model('m_profile');
 
         if ($this->session->userdata('level') != "Admin") {

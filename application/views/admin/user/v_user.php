@@ -45,12 +45,12 @@ $this->load->view('admin/layouts/header');
             </div>
             <div class="card-body">
               <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
-              <table id="myTableUser" class="display table table-bordered table-striped table-hover dt-responsive align-middle" style="width:100%">
+              <table id="tableUser" class="display table table-bordered table-striped table-hover dt-responsive align-middle" style="width:100%">
                 <thead>
                   <tr>
                     <th>No</th>
-                    <th>Username</th>
                     <th>Nama User</th>
+                    <th>Username</th>
                     <th>Role / Level</th>
                     <th>Login Terakhir</th>
                     <th>Status User</th>
@@ -86,11 +86,20 @@ $this->load->view('admin/layouts/header');
 
                 <div class="row gy-4" id="single">
 
+                  <div class="col-md-12 col-12">
+                    <div class="form-group">
+
+                      <label class="form-label">Nama</label>
+                      <input type="text" name="nama" class="form-control" placeholder="contoh: Sujiwo" required="">
+
+                    </div>
+                  </div>
+
                   <div class="col-md-6 col-12">
                     <div class="form-group">
 
                       <label class="form-label">Username</label>
-                      <input type="number" name="username" class="form-control" placeholder="contoh: 123" required="">
+                      <input type="email" name="username" class="form-control" placeholder="contoh: contoh@gmail.com" required="">
 
                     </div>
                   </div>
@@ -115,6 +124,7 @@ $this->load->view('admin/layouts/header');
 
                         <option value="">Pilih Role</option>
                         <option value="Admin">Admin</option>
+                        <option value="Pengguna">Pengguna</option>
 
                       </select>
 

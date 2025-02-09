@@ -135,6 +135,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
             dropdownParent: $("#myModal .modal-content")
         });
 
+        $('#selLevel').select2({
+            dropdownParent: $("#myModal .modal-content")
+        });
+
 
     });
 </script>
@@ -262,7 +266,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
             // $('#dataTable').DataTable();
             // Start jQuery click function to view Bootstrap modal when view info button is clicked
 
-            $('#myTableUser').on('click', '.edit-user', function() {
+            $('#tableUser').on('click', '.edit-user', function() {
                 // Get the id of selected phone and assign it in a variable called phoneData
                 var userId = $(this).attr('id');
 
@@ -326,7 +330,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
     <!-- Js Datatable User -->
     <script type="text/javascript">
-        $('#myTableUser').dataTable({
+        $('#tableUser').dataTable({
             "pageLength": 5,
             "lengthMenu": [5, 10, 25, 50, 75, 100],
             "responsive": true,
@@ -362,8 +366,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
         if (mediaUser.matches) {
             // Then trigger an alert
             // alert("test");
-            $('#myTableUser').attr('width', '100%');
-            var element = document.getElementById("myTableUser");
+            $('#tableUser').attr('width', '100%');
+            var element = document.getElementById("tableUser");
             element.classList.add("table-responsive");
 
         }

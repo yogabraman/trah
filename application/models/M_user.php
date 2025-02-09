@@ -4,8 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class M_user extends CI_Model {
 
 	var $table = 'users'; //nama tabel dari database
-	var $column_order = array(null, 'id_user', 'id_profile', 'email', 'level', 'lastlogin', 'active'); //field yang ada di table user
-	var $column_search = array('email', 'level'); //field yang diizin untuk pencarian 
+	var $column_order = array(null, 'id_user', 'id_profile', 'email', 'level', 'lastlogin', 'active', 'nama'); //field yang ada di table user
+	var $column_search = array('email', 'level', 'nama'); //field yang diizin untuk pencarian 
 	var $order = array('id_user' => 'asc'); // default order 
 
 	public function __construct()
@@ -17,10 +17,10 @@ class M_user extends CI_Model {
 	private function _get_datatables_query()
 	{
 		
-		$this->db->select('*')
-				 ->from($this->table);
-                //  ->join('personel', 'personel.id_personel = users.id_personel', 'left')
-				//  ->where('users.deleted_at', NULL);
+		$this->db->select('users.*, profile.nama')
+				 ->from($this->table)
+                 ->join('profile', 'profile.id_profile = users.id_profile', 'left')
+				 ->where('users.deleted_at', NULL);
 
 		$i = 0;
 	
@@ -74,8 +74,8 @@ class M_user extends CI_Model {
 
 	public function count_all()
 	{
-		$this->db->from($this->table);
-				//  ->where('deleted_at', NULL);
+		$this->db->from($this->table)
+				 ->where('deleted_at', NULL);
 		return $this->db->count_all_results();
 	}
 
@@ -127,13 +127,13 @@ class M_user extends CI_Model {
 
     public function delete_user($data, $id)
     {
-        $this->db->update('users', $data, array('id_user' => $id));
+        $this->db->delete('users', array('id_user' => $id));
         return ($this->db->affected_rows() > 0) ? TRUE : FALSE;
     }
 
-    public function delete_personel($data, $id)
+    public function delete_profile($data, $id)
     {
-        $this->db->update('users', $data, array('id_personel' => $id));
+        $this->db->update('profile', $data, array('id_profile' => $id));
         return ($this->db->affected_rows() > 0) ? TRUE : FALSE;
     }
     

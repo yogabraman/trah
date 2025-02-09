@@ -36,7 +36,7 @@ $this->load->view('admin/layouts/header');
       <div class="row mb-3 pb-1">
         <div class="col-12">
           <div class="d-flex align-items-lg-center flex-lg-row flex-column">
-            <div class="flex-grow-1">
+            <div class="">
               <h4 class="fs-16 mb-1">HALO, <?= $this->data['nama'] ?>!</h4>
               <p class="text-muted mb-0">Berikut adalah pohon keluarga Anda.</p>
             </div>
@@ -54,41 +54,41 @@ $this->load->view('admin/layouts/header');
               <div class="tree">
                 <ul>
                   <li>
-                    <a href="#">Parent</a>
-                    <a href="#">Parent</a>
+                    <a href="#"><h6>Parent</h6></a>
+                    <a href="#"><h6>Parent</h6></a>
                     <ul>
                       <li>
-                        <a href="#">Child</a>
+                        <a href="#"><h6>Child</h6></a>
                         <ul>
                           <li>
-                            <a href="#">Grand Child 1</a>
+                            <a href="#"><h6>Grand Child 1</h6></a>
                           </li>
                         </ul>
                       </li>
                       <li>
-                        <a href="#">Child</a>
+                        <a href="#"><h6>Child</h6></a>
                         <ul>
-                          <li><a href="#">Grand Child2</a></li>
+                          <li><a href="#"><h6>Grand Child2</h6></a></li>
                           <li>
-                            <a href="#">Grand Child</a>
+                            <a href="#"><h6>Grand Child</h6></a>
                             <ul>
                               <li>
-                                <a href="#">Great Grand Child</a>
+                                <a href="#"><h6>Great Grand Child</h6></a>
                               </li>
                               <li>
-                                <a href="#">Great Grand Child</a>
+                                <a href="#"><h6>Great Grand Child</h6></a>
                               </li>
                               <li>
-                                <a href="#">Great Grand Child</a>
+                                <a href="#"><h6>Great Grand Child</h6></a>
                               </li>
                             </ul>
                           </li>
                           <li>
-                            <a class="" href="#">Grand Child</a>
-                            <a class="" href="#">Wife</a>
+                            <a class="" href="#"><h6>Grand Child</h6></a>
+                            <a class="" href="#"><h6>Wife</h6></a>
                             <ul>
-                              <li><a href="#">Kid</a></li>
-                              <li><a href="#">Kid</a></li>
+                              <li><a href="#"><h6>Kid</h6></a></li>
+                              <li><a href="#"><h6>Kid</h6></a></li>
                             </ul>
                           </li>
                         </ul>

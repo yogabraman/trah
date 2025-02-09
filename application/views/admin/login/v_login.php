@@ -45,8 +45,8 @@ $this->load->view('admin/layouts/header-login');
                                     <form method="post" action="<?= base_url('login/proses_login') ?>">
 
                                         <div class="mb-3">
-                                            <label for="email" class="form-label">Email</label>
-                                            <input type="email" name="email" class="form-control" id="email" placeholder="Enter email">
+                                            <label for="username" class="form-label">Username</label>
+                                            <input type="email" name="username" class="form-control" id="username" placeholder="Enter username">
                                         </div>
 
                                         <div class="mb-3">

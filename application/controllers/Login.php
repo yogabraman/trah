@@ -40,7 +40,7 @@ class Login extends CI_Controller
         date_default_timezone_set('Asia/Jakarta');
         $waktu = date('Y-m-d H:i:s');
 
-        $this->form_validation->set_rules('email', 'Email', 'trim|required');
+        $this->form_validation->set_rules('username', 'Username', 'trim|required');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
 
         // Menetapkan pesan kesalahan khusus
@@ -49,7 +49,7 @@ class Login extends CI_Controller
 
         if ($this->form_validation->run() != false) {
 
-            $email = $this->input->post('email');
+            $username = $this->input->post('username');
             $password = $this->input->post('password');
 
             $data_update = array(
@@ -58,16 +58,16 @@ class Login extends CI_Controller
             );
 
             $wupdate = array(
-                'email' => $email
+                'username' => $username
             );
 
             $where = array(
-                'email' => $email
+                'username' => $username
             );
 
             $login = $this->m_login->cek_user("users", $where)->row_array();
 
-            $active = $this->m_login->cek_active("users", $email)->row_array();
+            $active = $this->m_login->cek_active("users", $username)->row_array();
 
 
             if (!empty($active)) {
@@ -89,6 +89,7 @@ class Login extends CI_Controller
                             $data_login = array(
                                 'id_user' => $login['id_user'],
                                 'id_profile' => $login['id_profile'],
+                                'referral' => $login['referral_code'],
                                 // 'nama' => "Superadmin",
                                 'status' => "login",
                                 'level' => $login['level'],
@@ -134,7 +135,7 @@ class Login extends CI_Controller
                 }
             } else {
                 $this->session->set_flashdata('title', 'Gagal Login!');
-                $this->session->set_flashdata('error', 'Email Anda Salah atau tidak terdaftar!!');
+                $this->session->set_flashdata('error', 'Username Anda Salah atau tidak terdaftar!!');
                 // $this->session->set_flashdata('redirect', 'login');
                 redirect(base_url('login'));
             }

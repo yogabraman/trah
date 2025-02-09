@@ -12,18 +12,21 @@ if(!defined('BASEPATH')) exit ('No direct script access allowed');
             return $this->db->get($table);
         }
 
-        public function cek_profile($table, $where) {
-            $this->db->where($where);
-            return $this->db->get($table);
+        public function cek_profile($where) {
+
+            return $this->db->select('*')
+                 ->from('profile')
+                 ->where($where)
+                 ->get();
         }
 
         public function cek_active($table, $user) {
         //set query
-            $this->db->where('email', $user);
+            $this->db->where('username', $user);
             return $this->db->get($table);
         }
 
-        public function cek_email($table, $where) {
+        public function cek_username($table, $where) {
 
             return $this->db->get_where($table, $where);
         }
@@ -33,8 +36,8 @@ if(!defined('BASEPATH')) exit ('No direct script access allowed');
             return ($this->db->affected_rows() > 0) ? TRUE : FALSE;
         }
 
-        public function update_password($data, $email){
-            $this->db->update('users', $data, array('md5(email)' => $email));
+        public function update_password($data, $password){
+            $this->db->update('users', $data, array('md5(password)' => $password));
             return ($this->db->affected_rows() > 0) ? TRUE : FALSE;
         }
 

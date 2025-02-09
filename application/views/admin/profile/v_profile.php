@@ -82,8 +82,8 @@ $this->load->view('admin/layouts/header');
               <div class="text-center">
                 <h5 class="fs-16 mb-1">Kode Referal Anda :</h5><br>
                 <h6 class="fs-16 mb-1"><?= $referral ?></h6><br>
-                <!-- <h5 class="fs-16 mb-1">Uniq ID Anda :</h5><br>
-                <h6 class="fs-16 mb-1"><?= $uid ?></h6> -->
+                <h5 class="fs-16 mb-1">Uniq ID Anda :</h5><br>
+                <h6 class="fs-16 mb-1"><?= $uid ?></h6>
               </div>
             </div>
           </div>

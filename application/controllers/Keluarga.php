@@ -49,8 +49,10 @@ class Keluarga extends MY_Controller {
             $row = array();
             $row[] = $no;
             $row[] = $field->uid_profile;
-            $row[] = $field->id_hubkel;
-            $row[] = "<button class='btn btn-sm btn-soft-warning edit-keluarga' id='".$field->id_keluarga."'><span class='mdi mdi-store-edit-outline'></span> Edit</button>
+            $row[] = $field->uid_profile;
+            $row[] = $field->uid_profile;
+            $row[] = "<button class='btn btn-sm btn-soft-info edit-keluarga' id='".$field->id_keluarga."'><span class='mdi mdi-account-details'></span> Detail</button>
+            <button class='btn btn-sm btn-soft-warning edit-keluarga' id='".$field->id_keluarga."'><span class='mdi mdi-store-edit-outline'></span> Edit</button>
                         <a onClick=\"javascript: return confirm('Anda yakin mau menghapus data ini ?');\" href='".base_url('keluarga/hapus_keluarga/')."".$field->id_keluarga."' class='btn btn-sm btn-soft-danger' ><span class='mdi mdi-store-remove-outline'></span> Hapus</a>";
 
             $data[] = $row;

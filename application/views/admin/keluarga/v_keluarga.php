@@ -51,16 +51,53 @@ $this->load->view('admin/layouts/header');
       <div class="row">
         <div class="col-lg-12">
           <div class="card border card-border-primary">
-            <div class="card-header d-flex justify-content-between bg-primary-subtle">
+            <div class="card-header bg-primary-subtle">
+              <div class="col-md-2">
+                <button class="btn btn-success" style="width: 100%" data-bs-toggle="modal" data-bs-target="#myModal"><span class="mdi mdi-store-plus-outline"></span> Tambah Keluarga</button>
+              </div><br>
 
-              <div class="col">
-                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myModal"><span class="mdi mdi-store-plus-outline"></span> Tambah Keluarga</button>
-                <!-- <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#myModal"><span class="mdi mdi-store-plus-outline"></span> Tambah Saudara</button>
-                <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#myModalImport"><span class="mdi mdi-cloud-upload-outline"></span> Tambah Anak</button> -->
+              <form action="" method="post">
+                <div class="form-body">
+                  <!-- <label class="form-label">Cari Nama</label> -->
 
-              </div>
+                  <div class="row gy-4" id="single">
+
+                    <div class="col-md-8 col-12">
+                      <div class="form-group">
+
+                        <!-- <label class="form-label">Cari Nama</label> -->
+                        <input type="text" class="form-control" name="daribulan" id="dariBulan" placeholder="Cari Nama Anggota Keluarga" required="">
+
+                      </div>
+                    </div>
+
+                    <div class="col-md-2 col-6">
+                      <div class="form-group">
+
+                        <!-- <label class="form-label">&nbsp;</label> -->
+                        <button type="button" class="btn btn-info" id="filter-suratmasuk" style="width: 100%"><i class="ri-filter-2-line"></i> Filter Data</button>
+
+                      </div>
+                    </div>
+
+                    <div class="col-md-2 col-6">
+                      <div class="form-group">
+
+                        <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+                        <!-- <label class="form-label">&nbsp;</label> -->
+                        <button type="button" class="btn btn-danger" id="filterSM-clear" style="width: 100%"><i class="mdi mdi-filter-off-outline"></i> Reset Filter</button>
+
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+              </form>
+
 
             </div>
+
             <div class="card-body">
               <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
               <table id="myTableKeluarga" class="display table table-bordered table-striped table-hover dt-responsive align-middle" style="width:100%">
@@ -68,7 +105,8 @@ $this->load->view('admin/layouts/header');
                   <tr>
                     <th>No</th>
                     <th>Nama</th>
-                    <th>Hubungan</th>
+                    <th>Ayah</th>
+                    <th>Ibu</th>
                     <th>Action</th>
                   </tr>
                 </thead>
